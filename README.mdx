@@ -1,0 +1,34 @@
+# react-polymorphic-forwardref
+
+This package is massively inspired by [react-polymorphed](https://github.com/nasheomirro/react-polymorphed). It handles the `typescript` version `5.x.x`, plus allows using already polymorphic
+components for further polymorphism.
+
+## Basic Usage
+
+```tsx
+import { forwardRefAs } from 'react-polymorphic-forwardref'
+
+interface MyPolymorphicComponentProps {
+    text: string
+}
+
+const MyPolymorphicComponent = forwardRefAs<'div', MyPolymorphicComponentProps>((props, ref) => {
+  const { as, text } = props;
+
+  const Component = as || 'div';
+
+  return <Component ref={ref}>{text}</Component>;
+});
+
+export const App = () => {
+  return (
+    <MyPolymorphicComponent
+      as={'button'}
+      text='Click me'
+      onClick={(e) => alert('The type of "e" is "React.MouseEvent<HTMLButtonElement, MouseEvent>"')}
+    />
+  );
+}
+
+App();
+```
