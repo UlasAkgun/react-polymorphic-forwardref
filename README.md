@@ -76,10 +76,8 @@ things to happen:
 
 ### Polymorphing into Another Polymorphic Component
 
-What if we were polymorphing into another polymorphic component? In this case, we expect 2 things to happen:
-
-- The polymorphed component should inherit the native properties of the default `HTML element` of the polymorphed component.
-- The polymorphed component should inherit the props of the polymorphed component.
+What if we were polymorphing into another polymorphic component? In this case, the polymorphed component should inherit all the props of the polymorphed component, including the native properties of
+the default `HTML element` and the explicitly defined props.
 
 Let's build another polymorphic component, to be later polymorphed into `MyPolymorphicComponent`
 
@@ -95,10 +93,11 @@ const AnotherPolymorphicComponent = forwardRefAs<'a', AnotherPolymorphicComponen
 })
 ```
 
-If we rendered this component by default:
+If this component is rendered without polymorphing, it would automatically receive the `Anchor` element related native HTML props, as well as `anotherText` prop, which is required.
 
 ```tsx
 <AnotherPolymorphicComponent
+    // "anotherText" is an explicity defined prop
     anotherText='I am a prop of "AnotherPolymorphicComponent'
     // "e" typing will inherit the default HTML element of "AnotherPolymorphicComponent", which is an "a" tag.
     // Hence, its type will be "React.MouseEvent<HTMLAnchorElement, MouseEvent>"
@@ -106,7 +105,11 @@ If we rendered this component by default:
 />
 ```
 
-Let us polymorph this component into 'MyPolymorphicComponent'.
+Now let's polymorph `AnotherPolymorphicComponent` into `MyPolymorphicComponent`.
+
+- `AnotherPolymorphicComponent` is going to inherit all the properties of `MyPolymorphicComponent`, including the `text` prop and the native HTML attributes for the default HTML element of
+  `MyPolymorphicComponent`.
+- `anotherText` prop that is required for `AnotherPolymorphicComponent` will be added on top of the inherited props.
 
 ```tsx
 <AnotherPolymorphicComponent
