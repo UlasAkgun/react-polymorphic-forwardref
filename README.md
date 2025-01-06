@@ -1,7 +1,8 @@
 # react-polymorphic-forwardref
 
-This package is massively inspired by [react-polymorphed](https://github.com/nasheomirro/react-polymorphed). It handles the `typescript` version `5.x.x`, plus allows using already polymorphic
-components for further polymorphism.
+This package is heavily inspired by [react-polymorphed](https://github.com/nasheomirro/react-polymorphed) and addresses changes introduced in `TypeScript` version `5.x.x`.
+
+In addition to supporting polymorphism with native HTML elements, it also enables polymorphing into existing polymorphic components.
 
 ## Basic Usage
 
@@ -23,7 +24,7 @@ const MyPolymorphicComponent = forwardRefAs<'div', MyPolymorphicComponentProps>(
 export const App = () => {
     return (
         <MyPolymorphicComponent
-            as={'button'}
+            as='button'
             text='Click me'
             onClick={(e) => alert('The type of "e" is automatically recognized as "React.MouseEvent<HTMLButtonElement, MouseEvent>"')}
         />
@@ -33,55 +34,52 @@ export const App = () => {
 App();
 ```
 
-## Use Cases
+## Automatically receive native HTML prop typings
 
-### Automatically receive native HTML prop typings
+On the above example, `MyPolymorphicComponent` uses `div` element by default for render, inheriting all native HTML attributes for a `div`.
 
-`MyPolymorphicComponent` is created as a `div` element by default. On the below example, `onClick` method's `e` parameter on the below example would recognize its default type as
-`React.MouseEvent<HTMLDivElement, MouseEvent>`.
+Let's consider `onClick` method and its typing. `onClick` method provides an `e` parameter, which is typed based on the HTML element it is assigned to. If the polymorped component is a `div` element,
+then `Typescript` recognizes the default type of `e` as `React.MouseEvent<HTMLDivElement, MouseEvent>`.
 
 ```tsx
 <MyPolymorphicComponent
-  text='Click me'
-  // "e" receives its typing automatically as "React.MouseEvent<HTMLDivElement, MouseEvent>"
-  onClick={(e) => {}}
+    text='I am a "div" element'
+    // "e" receives its typing automatically as "React.MouseEvent<HTMLDivElement, MouseEvent>"
+    onClick={(e) => alert('"e" typing is "React.MouseEvent<HTMLDivElement, MouseEvent>"')}
 />
-```
 
-If `e` is tried to be typed anything different, we would get a compiler error. Try casting it to the `Anchor` element equivalent:
-
-```tsx
 <MyPolymorphicComponent
-    text='Click me'
+    text='I am a "div" element'
     // ERROR: HTMLAnchorElement is not valid, since by default, it needs to be HTMLDivElement
-    onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {}}
+    onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => alert('Cannot define "e" as HTMLAnchorElement, I am a "div" element!')}
 />
 ```
 
-If `MyPolymorphicComponent` is polymorphed into a `button` element:
+Since this is a polymorphic component, its HTML element render can be modified based on where the component is consumed.
 
-```tsx
-<MyPolymorphicComponent
-    as='button'
-    text='Click me'
-    // "e" receives its typing automatically as "React.MouseEvent<HTMLButtonElement, MouseEvent>"
-    onClick={(e) => alert('My type is React.MouseEvent<HTMLButtonElement, MouseEvent>')}
-/>
-```
+Let's say that we would like to polymorph this component into an Anchor (`a`) tag. We can accomplish this by simply providing the `as` prop to the component. Once we provide `as="a"`, we expect 2
+things to happen:
 
-What about polymorphic into an `a` tag? `MyPolymorphicComponent` will automatically recognize `HTMLAnchorElement` related properties, such as `href` and `target`.
+- The `e` parameter of `onClick` should now be redefined based on the `HTMLAnchorElement`, effectively typing it as `React.MouseEvent<HTMLAnchorElement, MouseEvent>`.
+- Native `HTMLAnchorElement` properties should be immediately available, such as `href` and `target`.
 
 ```tsx
 <MyPolymorphicComponent
     as='a'
-    text='I am a link now'
+    text='I am an "a" element now'
     // Typescript will recognize the typings for "href" and "target"
     href="#"
     target="_blank"
+    onClick={(e) => alert('Yeap, you guessed it right, "e" typing is "React.MouseEvent<HTMLAnchorElement, MouseEvent>"')}
 />
 ```
 
 ### Polymorphing into Another Polymorphic Component
+
+What if we were polymorphing into another polymorphic component? In this case, we expect 2 things to happen:
+
+- The polymorphed component should inherit the native properties of the default `HTML element` of the polymorphed component.
+- The polymorphed component should inherit the props of the polymorphed component.
 
 Let's build another polymorphic component, to be later polymorphed into `MyPolymorphicComponent`
 
