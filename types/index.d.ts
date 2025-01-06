@@ -6,19 +6,19 @@ type DistributiveMerge<A, B> = DistributiveOmit<A, keyof B> & B
 type IntrinsicElement<E> = E extends PolymorphicForwardRefComponent<infer T, any> ? T : E
 type ExtendedProps<E, OwnProps> = E extends PolymorphicForwardRefComponent<any, infer P> ? Merge<P, OwnProps> : OwnProps
 
-export type PropsWithAs<
+type PropsWithAs<
     Component extends React.ElementType,
     PermanentProps extends object,
     ComponentProps extends object,
 > = DistributiveMerge<ComponentProps, PermanentProps & { as?: Component }>
 
-export type ForwardRefAsProps<
+export type PolymorphicForwardRefComponentProps<
     Default extends OnlyAs,
     Props extends object = {},
     OnlyAs extends React.ElementType | PolymorphicForwardRefComponent<any, any, any> = React.ElementType,
 > = PropsWithAs<OnlyAs, ExtendedProps<Default, Props>, React.ComponentPropsWithRef<IntrinsicElement<OnlyAs>>>
 
-export type PolymorphicComponentWithRef<
+type PolymorphicComponentWithRef<
     Default extends OnlyAs,
     Props extends object = {},
     OnlyAs extends React.ElementType | PolymorphicForwardRefComponent<any, any, any> = React.ElementType,
@@ -26,13 +26,13 @@ export type PolymorphicComponentWithRef<
     props: PropsWithAs<T, ExtendedProps<T, Props>, React.ComponentPropsWithRef<IntrinsicElement<T>>>
 ) => React.ReactElement | null
 
-export type PolymorphicForwardRefComponent<
+type PolymorphicForwardRefComponent<
     Default extends OnlyAs,
     Props extends object = {},
     OnlyAs extends React.ElementType | PolymorphicForwardRefComponent<any, any, any> = React.ElementType,
 > = Merge<React.ForwardRefExoticComponent<{}>, PolymorphicComponentWithRef<Default, Props, OnlyAs>>
 
-export type PolymorphicForwardRefFunction = <
+type PolymorphicForwardRefFunction = <
     Default extends OnlyAs,
     Props extends object = {},
     OnlyAs extends React.ElementType | PolymorphicForwardRefComponent<any, any, any> = React.ElementType,
