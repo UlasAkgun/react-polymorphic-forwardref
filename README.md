@@ -82,6 +82,8 @@ the default `HTML element` and the explicitly defined props.
 Let's build another polymorphic component, to be later polymorphed into `MyPolymorphicComponent`
 
 ```tsx
+import { forwardRefAs } from 'react-polymorphic-forwardref'
+
 interface AnotherPolymorphicComponentProps {
     anotherText: string
 }
