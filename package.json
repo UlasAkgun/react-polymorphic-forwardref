@@ -3,7 +3,7 @@
   "description": "Provides an enhanced version of \"React.forwardRef\" to polymorph using the \"as\" prop.",
   "license": "MIT",
   "author": "Ulas Akgun",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "keywords": [
     "react",
     "polymorphic",
@@ -18,8 +18,13 @@
   "bugs": {
     "url": "https://github.com/UlasAkgun/react-polymorphic-forwardref/issues"
   },
-  "types": "index.d.ts",
+  "scripts": {
+    "lint": "tsc"
+  },
+  "main": "./src/index.ts",
   "devDependencies": {
+    "@changesets/cli": "^2.27.11",
+    "@types/node": "^22.10.5",
     "@types/react": "^18.3.18",
     "typescript": "^5.7.2"
   },
