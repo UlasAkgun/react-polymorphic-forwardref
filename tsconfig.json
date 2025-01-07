@@ -1,12 +1,18 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "moduleResolution": "Node",
-    "jsx": "react-jsx",
-    "strict": true,
     "forceConsistentCasingInFileNames": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "Node",
+    "noEmit": true,
+    "noUncheckedIndexedAccess": true,
     "paths": {
-      "react-polymorphic-forwardref": ["./index.ts"]
-    }
-  }
+      "react-polymorphic-forwardref": [
+        "./src"
+      ]
+    },
+    "strict": true
+  },
+  "exclude": [
+    "./examples/**"
+  ]
 }
