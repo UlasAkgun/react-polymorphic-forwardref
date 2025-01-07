@@ -4,6 +4,10 @@ This package is heavily inspired by [react-polymorphed](https://github.com/nashe
 
 In addition to supporting polymorphism with native HTML elements, it also enables polymorphing into existing polymorphic components.
 
+- [Basic Usage](#basic-usage)
+- [Automatically receive native HTML prop typings](#automatically-receive-native-html-prop-typings)
+- [Polymorphing into Another Polymorphic Component](#polymorphing-into-another-polymorphic-component)
+
 ## Basic Usage
 
 ```tsx
@@ -74,7 +78,7 @@ things to happen:
 />
 ```
 
-### Polymorphing into Another Polymorphic Component
+## Polymorphing into Another Polymorphic Component
 
 What if we were polymorphing into another polymorphic component? In this case, the polymorphed component should inherit all the props of the polymorphed component, including the native properties of
 the default `HTML element` and the explicitly defined props.
