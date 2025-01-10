@@ -9,7 +9,3 @@
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
-
-## [1.0.0] - 2025-01-02
-
-First version that provides a "forwardRefAs" function allows polymorphic "React.forwardRef" component.
