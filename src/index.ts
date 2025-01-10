@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { PolymorphicForwardRefFunction } from "./types";
+import { ForwardRefAsFunction } from './types';
 
-export { PolymorphicForwardRefComponentProps } from './types';
+export { ForwardRefAsComponentPropsWithoutRef, ForwardRefAsComponentPropsWithRef } from './types';
 
-export const forwardRefAs = React.forwardRef as PolymorphicForwardRefFunction;
+export const forwardRefAs = React.forwardRef as ForwardRefAsFunction;
