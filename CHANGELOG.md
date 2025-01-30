@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.3
+
+### Patch Changes
+
+- a37c69b: remove "type" from export statements
+
 ## 0.0.2
 
 ### Patch Changes
