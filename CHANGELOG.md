@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.4
+
+### Patch Changes
+
+- 0bf3e20: revert the "export type" to "export" conversion
+
 ## 0.0.3
 
 ### Patch Changes
