@@ -19,16 +19,26 @@
     "url": "https://github.com/UlasAkgun/react-polymorphic-forwardref/issues"
   },
   "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
     "lint": "tsc"
   },
-  "main": "./src/index.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@changesets/cli": "^2.27.11",
     "@types/node": "^22.10.5",
     "@types/react": "^18.3.18",
+    "tsup": "^8.3.6",
     "typescript": "^5.7.2"
   },
   "peerDependencies": {
     "@types/react": ">=16.8"
+  },
+  "dependencies": {
+    "react": "^19.0.0"
   }
 }
