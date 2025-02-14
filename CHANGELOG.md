@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.7
+
+### Patch Changes
+
+- ef397bb: add missing export - part 2
+
 ## 0.0.6
 
 ### Patch Changes
