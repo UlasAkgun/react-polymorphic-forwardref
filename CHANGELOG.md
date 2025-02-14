@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.6
+
+### Patch Changes
+
+- e058702: add missing type to fix consumer compiler errors
+
 ## 0.0.5
 
 ### Patch Changes
