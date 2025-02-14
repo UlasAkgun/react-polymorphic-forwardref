@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.5
+
+### Patch Changes
+
+- 5d9da22: add cjs and esm compilations
+
 ## 0.0.4
 
 ### Patch Changes

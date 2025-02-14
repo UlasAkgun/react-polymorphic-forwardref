@@ -3,7 +3,7 @@
   "description": "Provides an enhanced version of \"React.forwardRef\" to polymorph using the \"as\" prop.",
   "license": "MIT",
   "author": "Ulas Akgun",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "keywords": [
     "react",
     "polymorphic",
