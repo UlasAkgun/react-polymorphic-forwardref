@@ -24,8 +24,7 @@ export type ForwardRefAsComponentPropsWithoutRef<
     OnlyAs extends React.ElementType | ForwardRefAsExoticComponent<any, any, any> = React.ElementType,
 > = PropsWithAs<OnlyAs, ExtendedProps<Default, Props>, React.ComponentPropsWithoutRef<IntrinsicElement<OnlyAs>>>
 
-
-type ForwardRefAsComponentWithRef<
+export type ForwardRefAsComponentWithRef<
     Default extends OnlyAs,
     Props extends object = {},
     OnlyAs extends React.ElementType | ForwardRefAsExoticComponent<any, any, any> = React.ElementType,
