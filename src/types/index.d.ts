@@ -39,7 +39,7 @@ type ForwardRefAsExoticComponent<
     OnlyAs extends React.ElementType | ForwardRefAsExoticComponent<any, any, any> = React.ElementType,
 > = Merge<React.ForwardRefExoticComponent<{}>, ForwardRefAsComponentWithRef<Default, Props, OnlyAs>>
 
-type ForwardRefAsFunction = <
+export type ForwardRefAsFunction = <
     Default extends OnlyAs,
     Props extends object = {},
     OnlyAs extends React.ElementType | ForwardRefAsExoticComponent<any, any, any> = React.ElementType,
