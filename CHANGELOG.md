@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.8
+
+### Patch Changes
+
+- 08468dd: fix React dependency setup
+
 ## 0.0.7
 
 ### Patch Changes
