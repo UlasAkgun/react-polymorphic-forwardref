@@ -1,6 +1,31 @@
-import { MyPolymorphicComponent } from './components/my_polymorphic_component';
+import { MyPolymorphicComponent, MyPolymorphicComponentProps, MyPolymorphicComponentPropsWithGeneric } from './components/my_polymorphic_component';
 
 const App = () => {
+    const props1: MyPolymorphicComponentProps = {
+        text: 'auto "e" typing',
+        onClick: (e) => {}
+    }
+
+    const props2: MyPolymorphicComponentProps = {
+        text: 'invalid "e" typing error',
+        onClick: (e: React.MouseEvent<HTMLAnchorElement>) => {}
+    }
+
+    const props3: MyPolymorphicComponentPropsWithGeneric = {
+        text: 'auto "e" typing for "button"',
+        onClick: (e) => {}
+    }
+
+    const props4: MyPolymorphicComponentPropsWithGeneric<'a'> = {
+        text: 'auto "e" typing for "anchor"',
+        onClick: (e) => {}
+    }
+
+    const props5: MyPolymorphicComponentPropsWithGeneric<'a'> = {
+        text: 'invalid "e" typing error',
+        onClick: (e: React.MouseEvent<HTMLDivElement>) => {}
+    }
+
     return (
         <div>
             <MyPolymorphicComponent
