@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.0.9
+
+### Patch Changes
+
+- 3ead6a4: fix the ForwardRefAs... related types to recognize the provided "as" prop
+
 ## 0.0.8
 
 ### Patch Changes
