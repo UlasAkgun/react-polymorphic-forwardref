@@ -15,13 +15,13 @@ type PropsWithAs<
 export type ForwardRefAsComponentPropsWithRef<
     Default extends OnlyAs,
     Props extends object = {},
-    OnlyAs extends React.ElementType | ForwardRefAsExoticComponent<any, any, any> = React.ElementType,
+    OnlyAs extends React.ElementType | ForwardRefAsExoticComponent<any, any, any> = Default,
 > = PropsWithAs<OnlyAs, ExtendedProps<Default, Props>, React.ComponentPropsWithRef<IntrinsicElement<OnlyAs>>>
 
 export type ForwardRefAsComponentPropsWithoutRef<
     Default extends OnlyAs,
     Props extends object = {},
-    OnlyAs extends React.ElementType | ForwardRefAsExoticComponent<any, any, any> = React.ElementType,
+    OnlyAs extends React.ElementType | ForwardRefAsExoticComponent<any, any, any> = Default,
 > = PropsWithAs<OnlyAs, ExtendedProps<Default, Props>, React.ComponentPropsWithoutRef<IntrinsicElement<OnlyAs>>>
 
 export type ForwardRefAsComponentWithRef<
